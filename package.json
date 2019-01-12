@@ -1,0 +1,26 @@
+{
+  "name": "urban-events",
+  "version": "1.0.0",
+  "description": "Event booking application",
+  "main": "index.js",
+  "scripts": {
+    "start": "nodemon app.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/reeversedev/urban-poll.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/reeversedev/urban-poll/issues"
+  },
+  "homepage": "https://github.com/reeversedev/urban-poll#readme",
+  "dependencies": {
+    "body-parser": "^1.18.3",
+    "express": "^4.16.4"
+  },
+  "devDependencies": {
+    "nodemon": "^1.18.9"
+  }
+}
