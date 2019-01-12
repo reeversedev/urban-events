@@ -1,2 +1,2 @@
-# urban-poll
-Realtime Polling Application using GraphQL and Subscriptions. 
+# urban-events
+Event booking application
