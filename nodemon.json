@@ -1,0 +1,7 @@
+{
+  "env": {
+    "MONGO_USER": "reeversedev",
+    "MONGO_PASSWORD": "9Xc0Av0LyM6m5can",
+    "MONGO_DB": "urban-events"
+  }
+}
