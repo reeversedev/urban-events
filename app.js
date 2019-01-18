@@ -10,7 +10,15 @@ const User = require('./models/user');
 
 const app = express();
 
-const events = [];
+const user = userId => {
+  return User.findById(userId)
+    .then(user => {
+      return { ...user._doc, _id: user.id };
+    })
+    .catch(err => {
+      throw err;
+    });
+};
 
 app.use(bodyParser.json());
 app.use(
@@ -25,12 +33,14 @@ app.use(
           description: String!
           price: Float!
           date: String!
+          creator: User!
         }
 
         type User {
           _id: ID!
           email: String!
           password: String
+          createdEvents: [Event!]
         }
 
         input EventInput {
@@ -62,9 +72,13 @@ app.use(
     rootValue: {
       events: () => {
         return Event.find()
-          .then(result => {
-            return result.map(event => {
-              return { ...event._doc, _id: event.id };
+          .then(events => {
+            return events.map(event => {
+              return {
+                ...event._doc,
+                _id: event.id,
+                creator: user.bind(this, event.creator)
+              };
             });
           })
           .catch(err => {
