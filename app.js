@@ -4,6 +4,7 @@ const graphQLHTTP = require('express-graphql');
 const { buildSchema } = require('graphql');
 const mongoose = require('mongoose');
 const bcrypt = require('bcryptjs');
+const schema = require('./graphql/schema/index');
 
 const Event = require('./models/event');
 const User = require('./models/user');
@@ -45,50 +46,7 @@ app.use(
   '/graphql',
   graphQLHTTP({
     graphiql: true,
-    schema: buildSchema(`
-
-        type Event {
-          _id: ID!
-          title: String!
-          description: String!
-          price: Float!
-          date: String!
-          creator: User!
-        }
-
-        type User {
-          _id: ID!
-          email: String!
-          password: String
-          createdEvents: [Event!]
-        }
-
-        input EventInput {
-          title: String!
-          description: String!
-          price: Float!
-          date: String!
-        }
-
-        input UserInput {
-          email: String!
-          password: String!
-        }
-
-        type RootQuery { 
-            events: [Event!]!
-        }
-
-        type RootMutation {
-            createEvent(eventInput: EventInput) : Event
-            createUser(userInput: UserInput): User
-        }
-
-        schema{
-            query: RootQuery
-            mutation: RootMutation
-        }
-    `),
+    schema: schema,
     rootValue: {
       events: () => {
         return Event.find()
