@@ -7,15 +7,23 @@ import {
 } from 'react-router-dom';
 import './App.css';
 import Auth from './pages/Auth';
+import MainNavigation from './components/Navigation/MainNavigation';
+import Bookings from './pages/Bookings';
+import Events from './pages/Events';
 
 class App extends Component {
   render() {
     return (
       <Router>
-        <Switch>
-          <Redirect from="/" to="/auth" exact />
-          <Route path="/" component={Auth} />
-        </Switch>
+        <React.Fragment>
+          <MainNavigation />
+          <Switch>
+            <Redirect from="/" to="/auth" exact />
+            <Route exact path="/auth" component={Auth} />
+            <Route exact path="/bookings" component={Bookings} />
+            <Route exact path="/events" component={Events} />
+          </Switch>
+        </React.Fragment>
       </Router>
     );
   }
