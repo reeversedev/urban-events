@@ -23,7 +23,7 @@
     "express-graphql": "^0.7.1",
     "graphql": "^14.0.2",
     "jsonwebtoken": "^8.4.0",
-    "mongoose": "^5.4.3"
+    "mongoose": "^5.7.5"
   },
   "devDependencies": {
     "nodemon": "^1.18.9"
